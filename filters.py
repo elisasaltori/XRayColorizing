@@ -4,7 +4,7 @@ def frequency_filtering(img_in, f_matrix, n):
 
     x,y= np.shape(img_in)
 
-    #fourier transforms img 
+    #fourier transforms img
     img_out = np.fft.fft2(img_in)
 
     #pads filter with 0s to match img length
@@ -44,7 +44,7 @@ def median_filter(img_in, n):
     img_out = np.zeros((x, y))
 
     #pad img in circular manner
-    pad_n = n // 2 
+    pad_n = n // 2
     img_in = np.pad(img_in, (pad_n), 'wrap')
 
 
@@ -58,4 +58,17 @@ def median_filter(img_in, n):
     img_out = np.median(aux_mat, axis=2)
 
     return img_out
-    
+
+def calculate_gaussian_filter(n, w):
+    f = np.zeros((n,n), dtype=float)
+    v = np.linspace(-5, 5, n)
+    for i in np.arange(n):
+        for j in np.arange(n):
+            x = v[i]
+            y = v[-1-j]
+            f[i][j] = (1/(2*np.pi*w**2)) * np.exp(-(x**2+y**2)/(2*w**2))
+    f = f/np.sum(f)
+    return f
+def gaussian_filter(img_in, n, w):
+    f = calculate_gaussian_filter(n, w)
+    return frequency_filtering(img_in, f, n)
