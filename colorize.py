@@ -10,8 +10,8 @@ def baggage_colorize(img_in):
 
     #tresholds for color mapping using the HSV system
     #mapping lighter intensity to orange, intermediate to green and high intensity to blue
-    low_tresh = 130
-    up_tresh = 200
+    low_tresh = 150
+    up_tresh = 215
 
     rev = 255-img_in
     img_out = np.zeros((x,y,3))
