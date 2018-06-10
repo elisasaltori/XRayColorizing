@@ -7,14 +7,19 @@
  
 ## Imagens utilizadas
 
-### Imagens raio-X de bagagens (disponível em:  http://dmery.ing.puc.cl/index.php/material/gdxray/)
+### Imagens raio-X de bagagens 
+
+(disponível em:  http://dmery.ing.puc.cl/index.php/material/gdxray/)
+
  **Exemplos:**
  
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/elisa/Sample_Images/Baggages/B0009_0001.png" height="300">
 
 [1] Mery, D.; Riffo, V.; Zscherpel, U.; Mondragón, G.; Lillo, I.; Zuccar, I.; Lobel, H.; Carrasco, M. (2015): GDXray: The database of X-ray images for nondestructive testing. Journal of Nondestructive Evaluation, 34.4:1-12. [ PDF ]
 
-### Radiografias (disponível em:  https://www.kaggle.com/nih-chest-xrays/data)
+### Radiografias 
+
+(disponível em:  https://www.kaggle.com/nih-chest-xrays/data)
 
  **Exemplos:**
 
