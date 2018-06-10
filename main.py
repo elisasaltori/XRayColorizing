@@ -9,6 +9,13 @@ import colorize as cl
 
 def main():
 
+    #read img name and read img
+
+    #apply smoothing filter
+    #apply sharpening filter
+    #equalize
+    #save picture
+
     #reading input
     #img_name = str(input()).rstrip()
     #img_name = "B0009_0001.png"
@@ -22,8 +29,8 @@ def main():
     plt.imshow(img, cmap="gray")
     
 
-    img_out = ft.smoothing_filter(img, method=2, n=3)
-    img_out = ft.sharpening_filter(img, method=1, n=7, sigma=0.5)
+    img_out = ft.smoothing_filter(img, method=2, n=3, sigma=3)
+    img_out = ft.sharpening_filter(img, method=2, n=7, sigma=0.5)
     img_out = eq.equalize(img_out, 1)
     img_out = eq.equalize(img_out, 2)
     plt.subplot(132)
