@@ -1,7 +1,17 @@
 import numpy as np
 
 def frequency_filtering(img_in, f_matrix, n):
+    """
+    Apply filter to img using the frequency domain
 
+    Parameters:
+        img_in: input img
+        f_matrix: filter matrix
+        n: filter size
+
+    Returns:
+        output img
+    """
     x,y= np.shape(img_in)
 
     #fourier transforms img
@@ -31,6 +41,8 @@ def average_filter(img_in, n):
     Returns:
         output img
     """
+
+    #generates filter
     avg_filter = np.ones((n,n))
     avg_filter = avg_filter/(n*n)
 
@@ -38,6 +50,16 @@ def average_filter(img_in, n):
 
 
 def median_filter(img_in, n):
+     """
+    Apply a median filter of size n over img_in
+
+    Parameters:
+        img_in: input img
+        n: size of filter
+
+    Returns:
+        output img
+    """
 
     #get shape of matrix and allocate img_out
     x, y = np.shape(img_in)
@@ -61,6 +83,18 @@ def median_filter(img_in, n):
 
     
 def smoothing_filter(img_in, method, n, sigma=0.5):
+    """
+    Apply a smoothing filter over given image
+
+    Parameters:
+        img_in: input image
+        method: number of desired method
+        n: size of filter
+        sigma: standard deviation (used in gaussian filter)
+    
+    Returns:
+        output image
+    """
 
     if(method==1):
         return average_filter(img_in, n)
@@ -69,13 +103,27 @@ def smoothing_filter(img_in, method, n, sigma=0.5):
     if(method==3):
         return gaussian_filter(img_in, n, sigma)
 
+
 def sharpening_filter(img_in, method, n, sigma=0.5):
+    """
+    Apply a sharpening filter over given image
+
+    Parameters:
+        img_in: input image
+        method: number of desired method
+        n: size of filter
+        sigma: standard deviation (used in laplacian filter)
+    
+    Returns:
+        output image
+    """
 
     if(method==1):
         return laplacian_filter(img_in, n, sigma)
 
     if(method==2):
         return sobel_op(img_in)
+
 
 def laplacian_filter(img_in, n, sigma):
     """
@@ -150,6 +198,13 @@ def sobel_op(img_in):
 
 
 def calculate_gaussian_filter(n, w):
+    """
+    Calculate matrix for gaussian filter
+
+    Parameters:
+        n: size of filter
+        w: standard deviation
+    """
     f = np.zeros((n,n), dtype=float)
     v = np.linspace(-5, 5, n)
     for i in np.arange(n):
@@ -162,6 +217,14 @@ def calculate_gaussian_filter(n, w):
 
 
 def gaussian_filter(img_in, n, w):
+    """
+    Apply gaussian filter over given image
+
+    Parameters:
+        img_in: input image
+        n: size of image
+        w: standard deviation
+    """
     f = calculate_gaussian_filter(n, w)
     return frequency_filtering(img_in, f, n)
 

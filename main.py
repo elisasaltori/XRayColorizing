@@ -7,7 +7,8 @@ import equalize as eq
 import colorize as cl
 import sys
 
-
+#main function
+#gets variables from input
 def main_input():
 
     #read test name (for output img naming)
@@ -46,6 +47,7 @@ def main_input():
     
 
     img_out = ft.smoothing_filter(img, method=smooth_method, n=smooth_n, sigma=smooth_sigma)
+    img_out = eq.equalize(img_out, 1)
     img_out = ft.sharpening_filter(img, method=sharpen_method, n=sharpen_n, sigma=sharpen_sigma)
 
     if(eq_method != 0):
@@ -70,7 +72,8 @@ def main_input():
     plt.show()
     imageio.imwrite('./output/'+img_name+'_'+test_name+'.png', img_out)
 
-
+#main function
+#gets arguments from terminal (used for automatic testing)
 def main():
 
     #read test name (for output img naming)
@@ -96,7 +99,6 @@ def main():
     #colorizing
     color_method = int(sys.argv[10])
 
-
     img_out = ft.smoothing_filter(img, method=smooth_method, n=smooth_n, sigma=smooth_sigma)
     img_out = ft.sharpening_filter(img, method=sharpen_method, n=sharpen_n, sigma=sharpen_sigma)
 
@@ -109,6 +111,8 @@ def main():
         if(eq_method != 1):
             img_out = eq.equalize(img_out, eq_method)
     
+    imageio.imwrite('./output/'+img_name+'_'+test_name+'_grey.png', img_out)
+
     img_out = cl.colorize_image(img_out.astype(np.uint8), color_method)
 
     imageio.imwrite('./output/'+img_name+'_'+test_name+'.png', img_out)

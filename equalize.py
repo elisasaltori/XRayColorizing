@@ -8,8 +8,15 @@ def equalize(img_in, method):
         return histrogram_equalize(img_in)
 
 def normalize(img_in):
+    """
+    Normalize an image
 
-    return (255*(img_in-np.min(img_in))/(np.max(img_in)-np.min(img_in)))
+    Parameters:
+        img_in: input image
+    """
+    img_in = img_in.astype(float)
+
+    return (255*(img_in-np.min(img_in))/(np.max(img_in)-np.min(img_in))).astype(np.uint8)
 
 def histrogram_equalize(img_in):
     """

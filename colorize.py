@@ -38,45 +38,19 @@ def baggage_colorize(img_in):
 
     return img_out
 
+
 def hot_colormap(img_in):
     
-    #image dimensions
     x,y = np.shape(img_in)
-    img_in = 255-img_in
-    img_out = np.zeros((x,y,3))
-
-    #rgb
-    #red
-    aux = np.zeros((x,y))
-    aux = img_in/255.0
-    aux[aux>=0.35]=1
-    aux[aux<0.35]=(aux[aux<0.35]+0.01)/(0.35+0.01)
-  
-
-    img_out[:,:,0] = aux
-
-    #green
-    aux = np.zeros((x,y))
-    aux = img_in/255.0
-    aux[aux>=0.74]=1
-    aux[aux<0.74]=(aux[aux<0.74]-0.35)/(0.74-0.35)
-    img_out[:,:,1] = aux
-  
-    #blue
-    aux = np.zeros((x,y))
-    aux = img_in/255.0
-    aux=(aux-0.74)/(1-0.74)
-    img_out[:,:,2] = aux
-    #-0.01|0.35
-    #0.35|0.74
-    #0.74|1
+    img_out = np.zeros((x,y,3)).astype(np.uint8)
+    img_out = plt.cm.hot(img_in)
 
     return img_out
 
 def inferno_colormap(img_in):
 
     x,y = np.shape(img_in)
-    img_out = np.zeros((x,y,3))
+    img_out = np.zeros((x,y,3)).astype(np.uint8)
     img_out = plt.cm.inferno(img_in)
 
     return img_out
