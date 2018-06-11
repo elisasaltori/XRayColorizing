@@ -113,7 +113,6 @@ def main():
 
     imageio.imwrite('./output/'+img_name+'_'+test_name+'.png', img_out)
 
-
 main()
 
    
