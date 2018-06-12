@@ -170,6 +170,50 @@ Portanto, embora o método do histograma tenha bons resultados para a maioria da
 
 O mapeamento para cores visa também aumentar a distinção entre os elementos da imagem, uma vez que pode-se distinguir mais tons de cores do que tons de cinza.
 
+Três mapeamentos foram testados nessa etapa:
+- Colorização de bagagens
+- Hot colormap
+- Inferno colormap
+
+Dentre esses, tanto o hot colormap quanto o inferno colormap são funções prontas da biblioteca Matplotlib.
+
+#### Colorização de bagagens
+
+Esse mapeamento é inspirado nos mecanismos utilizados por aeroportos no scan de imagens, como exemplificado em [2]. A função de mapeamento foi feita utilizando o sistema de cores HSV.
+
+Essa colorização utiliza três cores principais de acordo com o material encontrado:
+    - Laranja: materiais orgânicos, de menor densidade.
+    - Verde: materiais plásticos, de densidade média.
+    - Azul: materiais duros, como metal.
+
+Na definição da matiz de um pixel, então, foi considerada que a intensidade de um pixel é inversamente proporcional à densidade do material: um pixel de menor intensidade (mais escuro) representa uma densidade maior e vice versa.
+
+Foram então definidos limites simples inferiores e superiores sobre a intensidade dos pixels para a definição de sua matiz (laranja, verde ou azul):
+    - Azul: 0 a 40 (Matiz = 236/360)
+    - Verde: 41 a 105 (Matiz = 100/360)
+    - Laranja: 106 a 255 (Matiz = 47/360)
+
+Esses valores foram obtidos por observação manual das intensidades de pixel em imagens de bagagem.
+
+Já os canais de saturação e valor foram definidos da seguinte forma:
+    - Saturação: max(2*(255-img)/255.0, 1)
+    - Valor: img/255.0
+    
+Os canais foram assim definidos para manter pixels brancos (intensidade 255) em seu estado original (com saturação 0 e valor 1) e a fim de dar mais destaque às intensidades médias e baixas na imagem (densidade de material média e alta). 
+
+No entanto, o mapeamento de cores ainda não alcançou completamente os objetivos de colorização.
+
+Muito específico para uma imagem, não funciona tão bem com as demais
+Será aperfeiçoado para a entrega final.
+
+#### Hot colormap
+
+Sequencial
+
+#### Inferno colormap
+
+Perceptualmente uniforme
+
 
 ## Próximos passos
 - **Aprimorar mapeamento de cores para bagagens**
@@ -189,3 +233,5 @@ O mapeamento para cores visa também aumentar a distinção entre os elementos d
 
 [1]  KASE, Kannan. Effective Use of Color in X-ray Image Enhancement for
 Luggage Inspection. 2002. 30f. Dissertação de Mestrado - University of Tennessee, Knoxville, 2002.
+
+[2] How To Read An Airport Security X-Ray Image. Disponível em: < http://snallabolaget.com/how-to-read-an-airport-security-x-ray-image/ >. Acesso em: 12 jun. 2018.
