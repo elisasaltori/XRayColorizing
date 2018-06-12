@@ -68,7 +68,7 @@ Logo abaixo, podemos ver dois exemplos de aplicação do filtro (aplicado com um
 
 - **Imagem de bagagem:**
  <p float="left" align="middle">
- <img src="https://raw.githubusercontent.com/elisasaltori/XRayColorizing/master/Sample_Images/Baggages/B0023_0001.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Sample_Images/Baggages/B0009_0001.png" height="300">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Smoothing_Filters/gaussian_3_1.png" height="300">
  </p>
 
@@ -89,7 +89,7 @@ O filtro sobel foi implementado por possuir um bom resultado na identificação 
 Abaixo, estão os resultados da aplicação do filtro, com uma vizinhança de 3x3. Temos à esquerda a imagem original, e à direita, o resultado da aplicação do filtro.
 - **Imagem de bagagem:**
  <p float="left" align="middle">
- <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Sample_Images/Baggages/B0009_0001.png" height="300">
+ <img src="https://raw.githubusercontent.com/elisasaltori/XRayColorizing/master/Sample_Images/Baggages/B0023_0001.png" height="300">
  <img src="https://raw.githubusercontent.com/elisasaltori/XRayColorizing/master/Test_Images/Sharpening_Filters/sobel_histogram.png" height="300">
  </p>
 
