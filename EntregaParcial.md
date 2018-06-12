@@ -139,7 +139,7 @@ Um método foi testado nessa etapa: a equalização por histograma.
 
 #### Equalização por histograma
 
-A equalização por histograma apresentou um comportamento 
+A equalização por histograma apresentou um comportamento adequado na maioria dos casos, aumentando significativamente o contraste entre os tons intermediários da imagem quando comparada à normalização comum. Abaixo, podemos verificar esse efeito em sua aplicação sobre duas imagens:
 
 - **Normalização da imagem (esquerda) vs equalização por histograma (direita):**
  <p float="left" align="middle">
@@ -149,9 +149,22 @@ A equalização por histograma apresentou um comportamento
  
  - **Normalização da imagem (esquerda) vs equalização por histograma (direita):**
  <p float="left" align="middle">
- <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Sample_Images/Baggages/B0023_0001.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Histogram/gun_normal.png" height="300">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Histogram/gun_histogram.png" height="300">
  </p>
+ 
+ No entanto, verificamos também que a equalização por histograma não funciona bem para todos os casos. Em particular, verificamos que, quando a imagem possui uma grande área de fundo branco, o contraste obtido pela equalização por histograma é distintamente pior que a obtida pela normalização. Isso observado no exemplo abaixo:
+ 
+  - **Normalização da imagem (esquerda) vs equalização por histograma (direita):**
+ <p float="left" align="middle">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Histogram/hist_bad/normal_good.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Histogram/hist_bad/histbad.png" height="300">
+ </p>
+
+O resultado pode ser dito, inclusive, pior que o da imagem original. 
+
+Portanto, embora o método do histograma tenha bons resultados para a maioria das imagens, devemos ter cuidado ao aplicá-la sobre todas. Pretendemos, na próxima etapa, buscar um método de equalização adaptativa com histogramas para tentar corrigir os mals casos da equalização por histograma comum.
+
 
 ### Mapeamento de cores
 
