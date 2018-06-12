@@ -68,7 +68,7 @@ Logo abaixo, podemos ver dois exemplos de aplicação do filtro (aplicado com um
 
 - **Imagem de bagagem:**
  <p float="left" align="middle">
- <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Sample_Images/Baggages/B0009_0001.png" height="300">
+ <img src="https://raw.githubusercontent.com/elisasaltori/XRayColorizing/master/Sample_Images/Baggages/B0023_0001.png" height="300">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Smoothing_Filters/gaussian_3_1.png" height="300">
  </p>
 
