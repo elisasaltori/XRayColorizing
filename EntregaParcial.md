@@ -61,6 +61,24 @@ Ele apresenta um comportomento mais desejado que o filtro de média, ocasionando
 
 #### Filtro gaussiano
 
+O filtro gaussiano foi implementado por possuir um comportamento mais uniforme que o filtro de mediana. 
+
+Logo abaixo, podemos ver dois exemplos de aplicação do filtro (aplicado com uma vizinha de tamanho 3x3 e desvio padrão de valor 1). Em ambos os casos, temos, a esquerda, temos a imagem original; à direita, a imagem com o filtro aplicado.
+
+
+- **Imagem de bagagem:**
+ <p float="left" align="middle">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Sample_Images/Baggages/B0009_0001.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Smoothing_Filters/gaussian_3_1.png" height="300">
+ </p>
+
+- **Radiografia:**
+ <p float="left" align="middle">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Sample_Images/Chest_Xrays/00000013_026.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Smoothing_Filters/chest_median.png" height="300">
+ </p>
+
+
 ### Filtros de realce de bordas
 
 Os filtros de realce de bordas são importantes para recuperar detalhes que possam ter sido perdidos com a suavização.
