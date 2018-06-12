@@ -95,20 +95,25 @@ Temos abaixo as três imagens lado a lado: com filtro de média, com mediana e c
 
 Os filtros de realce de bordas são importantes para recuperar detalhes que possam ter sido perdidos com a suavização.
 
-#### Filtro sobel
+Dois métodos foram testados nessa etapa:
+- Operador Sobel
+- Filtro laplaciano
 
-O filtro sobel foi implementado por possuir um bom resultado na identificação de contornos.
-Abaixo, estão os resultados da aplicação do filtro, com uma vizinhança de 3x3. Temos à esquerda a imagem original, e à direita, o resultado da aplicação do filtro.
+#### Operador Sobel
+
+O operador sobel foi implementado por possuir um bom resultado na identificação de contornos.
+Abaixo, estão os resultados da aplicação do filtro, com uma vizinhança de 3x3. Temos à esquerda a imagem original, e à direita, o resultado da aplicação do filtro. Ambos os conjuntos de imagens são apresentados já equalizados a fim de facilitar a visualização dos efeitos do operador.
+
 - **Imagem de bagagem:**
  <p float="left" align="middle">
- <img src="https://raw.githubusercontent.com/elisasaltori/XRayColorizing/master/Sample_Images/Baggages/B0023_0001.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Histogram/gun_histogram.png" height="300">
  <img src="https://raw.githubusercontent.com/elisasaltori/XRayColorizing/master/Test_Images/Sharpening_Filters/sobel_histogram.png" height="300">
  </p>
 
  - **Radiografia:**
   <p float="left" align="middle">
-  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Sample_Images/Chest_Xrays/00000013_026.png" height="300">
-  <img src="https://raw.githubusercontent.com/elisasaltori/XRayColorizing/master/Test_Images/Sharpening_Filters/sobel_chest.png" height="300">
+  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Histogram/chest_histogram.png" height="300">
+  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Sharpening_Filters/sobel_chest.png" height="300">
   </p>
 
 #### Filtro Laplaciano
