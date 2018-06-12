@@ -98,6 +98,16 @@ Abaixo, estão os resultados da aplicação do filtro, com uma vizinhança de 3x
   <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Sample_Images/Chest_Xrays/00000013_026.png" height="300">
   <img src="https://raw.githubusercontent.com/elisasaltori/XRayColorizing/master/Test_Images/Sharpening_Filters/sobel_chest.png" height="300">
   </p>
+
+#### Filtro Laplaciano
+Diferente do filtro Sobel, que se trata de um filtro de primeira ordem, o filtro laplaciano é de segunda ordem. E é capaz de identificar bordas independente de direção.
+
+- **Imagem de bagagem:**
+ <p float="left" align="middle">
+ <img src="https://raw.githubusercontent.com/elisasaltori/XRayColorizing/master/Sample_Images/Baggages/B0023_0001.png" height="300">
+ <img src="https://raw.githubusercontent.com/elisasaltori/XRayColorizing/master/Test_Images/Sharpening_Filters/laplacian_7_3.png" height="300">
+ </p>
+
 ### Métodos de equalização
 
 Esses métodos visam aumentar o contraste da imagem, facilitando a distinção entre os elementos que a compõem.
