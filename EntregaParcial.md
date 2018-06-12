@@ -130,11 +130,28 @@ Abaixo, estão os resultados da aplicação do filtro, com uma vizinhança de 7x
  <img src="https://raw.githubusercontent.com/elisasaltori/XRayColorizing/master/Test_Images/Sharpening_Filters/laplacian_7_3.png" height="300">
  </p>
  
- 
+ Como pode ser visto, não conseguimos obter um bom resultado com o filtro laplaciano. A imagem de saída é muito similar a de entrada e possui uma maior quantidade de ruído. O funcionamento do filtro será verificado para a próxima etapa.
 
 ### Métodos de equalização
 
 Esses métodos visam aumentar o contraste da imagem, facilitando a distinção entre os elementos que a compõem.
+Um método foi testado nessa etapa: a equalização por histograma.
+
+#### Equalização por histograma
+
+A equalização por histograma apresentou um comportamento 
+
+- **Normalização da imagem (esquerda) vs equalização por histograma (direita):**
+ <p float="left" align="middle">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Histogram/compare_chest_hist/00000013_026.png_1121_grey.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Histogram/compare_chest_hist/00000013_026.png_1122_grey.png" height="300">
+ </p>
+ 
+ - **Normalização da imagem (esquerda) vs equalização por histograma (direita):**
+ <p float="left" align="middle">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Sample_Images/Baggages/B0023_0001.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Histogram/gun_histogram.png" height="300">
+ </p>
 
 ### Mapeamento de cores
 
