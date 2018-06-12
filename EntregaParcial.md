@@ -101,7 +101,7 @@ Dois métodos foram testados nessa etapa:
 
 #### Operador Sobel
 
-O operador sobel foi implementado por possuir um bom resultado na identificação de contornos.
+O operador sobel foi implementado por possuir um bom resultado na identificação de contornos. Em sua utilização, o operador é aplicado sobre a imagem de entrada e o resultado dessa operação é somado à imagem original.
 Abaixo, estão os resultados da aplicação do filtro, com uma vizinhança de 3x3. Temos à esquerda a imagem original, e à direita, o resultado da aplicação do filtro. Ambos os conjuntos de imagens são apresentados já equalizados a fim de facilitar a visualização dos efeitos do operador.
 
 - **Imagem de bagagem:**
@@ -115,15 +115,22 @@ Abaixo, estão os resultados da aplicação do filtro, com uma vizinhança de 3x
   <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Histogram/chest_histogram.png" height="300">
   <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Sharpening_Filters/sobel_chest.png" height="300">
   </p>
+  
+  Como visto acima, o operador sobel apresentou um comportamento interessante para a distinção de elementos no raio-x da bagagem, destacando os diversos objetos na mala, que poderá ser útil na composição final da imagem.
+  
+  Já na imagem da radiografia, percebe-se também um aumento significativo no destaque das bordas. No entanto, foi considerado que a mudança provocada pelo efeito possa prejudicar o diagnóstico médico, uma vez que a imagem final é razoavelmente distinta da original, com a qual os profissionais médicos estão acostumados a trabalhar.
 
 #### Filtro Laplaciano
-Diferente do filtro Sobel, que se trata de um filtro de primeira ordem, o filtro laplaciano é de segunda ordem. E é capaz de identificar bordas independente de direção.
+O filtro implementado é o laplaciano da gaussiana. Diferentemente do filtro Sobel, que se trata de um filtro de derivada de primeira ordem, o filtro laplaciano aproxima uma derivada de segunda ordem e, portanto, é mais sensível a ruído. Esse método foi aplicado para comparar sua atuação com o operador anterior.
+Abaixo, estão os resultados da aplicação do filtro, com uma vizinhança de 7x7 e desvio padrão 3. Temos à esquerda a imagem original, e à direita, o resultado da aplicação do filtro. Ambos os conjuntos de imagens são apresentados já equalizados a fim de facilitar a visualização dos efeitos do operador.
 
 - **Imagem de bagagem:**
  <p float="left" align="middle">
- <img src="https://raw.githubusercontent.com/elisasaltori/XRayColorizing/master/Sample_Images/Baggages/B0023_0001.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Histogram/gun_histogram.png" height="300">
  <img src="https://raw.githubusercontent.com/elisasaltori/XRayColorizing/master/Test_Images/Sharpening_Filters/laplacian_7_3.png" height="300">
  </p>
+ 
+ 
 
 ### Métodos de equalização
 
