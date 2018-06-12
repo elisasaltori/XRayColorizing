@@ -61,7 +61,7 @@ Ele apresenta um comportomento mais desejado que o filtro de média, ocasionando
 
 #### Filtro gaussiano
 
-O filtro gaussiano foi implementado por possuir um comportamento mais uniforme que o filtro de mediana. 
+O filtro gaussiano foi implementado por possuir um comportamento mais uniforme que o filtro de mediana.
 
 Logo abaixo, podemos ver dois exemplos de aplicação do filtro (aplicado com uma vizinha de tamanho 3x3 e desvio padrão de valor 1). Em ambos os casos, temos, a esquerda, temos a imagem original; à direita, a imagem com o filtro aplicado.
 
@@ -83,6 +83,21 @@ Logo abaixo, podemos ver dois exemplos de aplicação do filtro (aplicado com um
 
 Os filtros de realce de bordas são importantes para recuperar detalhes que possam ter sido perdidos com a suavização.
 
+#### Filtro sobel
+
+O filtro sobel foi implementado por possuir um bom resultado na identificação de contornos.
+Abaixo, estão os resultados da aplicação do filtro, com uma vizinhança de 3x3. Temos à esquerda a imagem original, e à direita, o resultado da aplicação do filtro.
+- **Imagem de bagagem:**
+ <p float="left" align="middle">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Sample_Images/Baggages/B0009_0001.png" height="300">
+ <img src="https://raw.githubusercontent.com/elisasaltori/XRayColorizing/master/Test_Images/Sharpening_Filters/sobel_histogram.png" height="300">
+ </p>
+
+ - **Radiografia:**
+  <p float="left" align="middle">
+  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Sample_Images/Chest_Xrays/00000013_026.png" height="300">
+  <img src="https://raw.githubusercontent.com/elisasaltori/XRayColorizing/master/Test_Images/Sharpening_Filters/sobel_chest.png" height="300">
+  </p>
 ### Métodos de equalização
 
 Esses métodos visam aumentar o contraste da imagem, facilitando a distinção entre os elementos que a compõem.
@@ -97,7 +112,7 @@ O mapeamento para cores visa também aumentar a distinção entre os elementos d
 
     Como visto na discussão de resultados, o mapeamento implementado não funciona da forma esperada em todas as ocasiões. Será buscada uma nova estratégia de mapeamento de forma a se aproximar do resultado esperado, uma que não dependa apenas de thresholds sobre a intensidade da imagem.
     Pretende-se, inicialmente, testar a técnica baseada em cossenos descrita em [1].
-    
+
 - **Implementação do Equalização por Histograma Adaptativo**
 
     Para os casos em que a equalização por histograma comum não funciona bem, como em imagens com grandes fundos brancos, pretendemos aplicar um método de histograma adaptativo. Nós esperamos que isso aumente o contraste dos elementos da imagem final.
