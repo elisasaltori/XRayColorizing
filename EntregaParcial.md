@@ -20,7 +20,10 @@ Na execução do programa, todas as imagens passam pelas seguintes etapas de pro
     Nos itens a seguir, detalharemos o que foi feito em cada uma dessas etapas, apresentando os métodos utilizados e os resultados com eles obtidos.
 
 ### Filtros de Suavização
-Três métodos de suavização foram testados:    
+
+Os filtros de suavização são utilizados a remoção de ruído da imagem.
+
+Três métodos foram testados nessa etapa:    
 - Filtro de média
 - Filtro de mediana
 - Filtro gaussiano
@@ -28,8 +31,17 @@ Três métodos de suavização foram testados:
 #### Filtro de média
 
 ### Filtros de realce de bordas
+
+Os filtros de realce de bordas são importantes para recuperar detalhes que possam ter sido perdidos com a suavização.
+
 ### Métodos de equalização
+
+Esses métodos visam aumentar o contraste da imagem, facilitando a distinção entre os elementos que a compõem.
+
 ### Mapeamento de cores
+
+O mapeamento para cores visa também aumentar a distinção entre os elementos da imagem, uma vez que pode-se distinguir mais tons de cores do que tons de cinza.
+
 
 ## Próximos passos
 - **Aprimorar mapeamento de cores para bagagens**
