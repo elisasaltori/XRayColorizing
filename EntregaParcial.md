@@ -182,38 +182,83 @@ Dentre esses, tanto o hot colormap quanto o inferno colormap são funções pron
 Esse mapeamento é inspirado nos mecanismos utilizados por aeroportos no scan de imagens, como exemplificado em [2]. A função de mapeamento foi feita utilizando o sistema de cores HSV.
 
 Essa colorização utiliza três cores principais de acordo com o material encontrado:
-    - Laranja: materiais orgânicos, de menor densidade.
-    - Verde: materiais plásticos, de densidade média.
-    - Azul: materiais duros, como metal.
+- **Laranja**: materiais orgânicos, de menor densidade.
+- **Verde**: materiais plásticos, de densidade média.
+- **Azul**: materiais duros, como metal.
 
 Na definição da matiz de um pixel, então, foi considerada que a intensidade de um pixel é inversamente proporcional à densidade do material: um pixel de menor intensidade (mais escuro) representa uma densidade maior e vice versa.
 
 Foram então definidos limites simples inferiores e superiores sobre a intensidade dos pixels para a definição de sua matiz (laranja, verde ou azul):
-    - Azul: 0 a 40 (Matiz = 236/360)
-    - Verde: 41 a 105 (Matiz = 100/360)
-    - Laranja: 106 a 255 (Matiz = 47/360)
+- **Azul:** 0 a 40 (Matiz = 236/360)
+- **Verde:** 41 a 105 (Matiz = 100/360)
+- **Laranja:** 106 a 255 (Matiz = 47/360)
 
 Esses valores foram obtidos por observação manual das intensidades de pixel em imagens de bagagem.
 
 Já os canais de saturação e valor foram definidos da seguinte forma:
-    - Saturação: max(2*(255-img)/255.0, 1)
-    - Valor: img/255.0
+- **Saturação:** max(2*(255-img)/255.0, 1)
+- **Valor:** img/255.0
     
 Os canais foram assim definidos para manter pixels brancos (intensidade 255) em seu estado original (com saturação 0 e valor 1) e a fim de dar mais destaque às intensidades médias e baixas na imagem (densidade de material média e alta). 
 
-No entanto, o mapeamento de cores ainda não alcançou completamente os objetivos de colorização.
+No entanto, o mapeamento de cores ainda não alcançou completamente os objetivos de colorização. Abaixo temos três exemplos da aplicação do mapamento (os dois últimos com a aplicação do operador sobel):
 
-Muito específico para uma imagem, não funciona tão bem com as demais
-Será aperfeiçoado para a entrega final.
+<p float="left" align="middle">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/test.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/sobel_color1.png" height="300">
+  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/B0011_0001.png_1212.png" height="300">
+ </p>
+
+Como pode-se ver acima, a separação de cores funciona razoavelmente bem, principalmente para os elementos de alta densidade, tornando-os todos da cor azul. No entanto, os limites ideais de intensidade utilizados para a definição da matiz variam de acordo com a imagem, e muitos objetos ficam cortados ao meio com duas cores distintas. Também há muitas vezes um comportamento inadequado quanto ao fundo da bagagem, trazendo vários artefatos à colorização.
+
+Sendo assim, buscaremos aperfeiçoar esse método de colorização para a entrega final. O primeiro objetivo será encontrar uma estratégia mais confiável que a divisão por limites de intensidade. 
 
 #### Hot colormap
 
-Sequencial
+O hot colormap é um mapa de cores sequencial, utilizando, como seu nome indica, cores quentes, como amarelo e vermelho.
+
+Podemos ver abaixo alguns exemplos de sua aplicação.
+
+-**Bagagem:**
+<p float="left" align="middle">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/B0011_0001.png_1222.png" height="300">
+ </p>
+ 
+ A imagem acima utiliza o operador sobel e a equalização por histograma.
+ 
+ -**Radiografias:**
+<p float="left" align="middle">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/00000013_026.png_1122.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/00000013_026.png_1222.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/00000132_002.png_1121.png" height="300">
+ </p>
+ 
+ As três imagens utilizam o filtro de mediana e a equalização por histograma. A primeira e a terceira utilizam o filtro laplaciano, enquanto que a segunda utiliza o operador sobel.
 
 #### Inferno colormap
 
-Perceptualmente uniforme
+O inferno colormap é um mapa perceptualmente uniforme, facilitando a distinção de elementos em qualquer ponto de sua escala.
 
+Podemos ver abaixo alguns exemplos de sua aplicação. 
+
+-**Bagagens:**
+<p float="left" align="middle">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/B0011_0001.png_1232.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/B0023_0001.png_2232.png" height="300">
+ </p>
+ 
+ Ambas as imagens utilizam o filtro de mediana, o operador sobel e a equalização por histograma.
+ 
+ -**Radiografias:**
+<p float="left" align="middle">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/00000013_026.png_1132.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/00000013_026.png_1232.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/00000132_002.png_1131.png" height="300">
+ </p>
+
+As três imagens utilizam o filtro de mediana e a equalização por histograma. A primeira e a terceira utilizam o filtro laplaciano, enquanto que a segunda utiliza o operador sobel.
+
+Pode-se observar, tanto no caso das bagagens quanto da radiografia, que o inferno colormap fornece à imagem uma boa distinção entre seus elementos. 
 
 ## Próximos passos
 - **Aprimorar mapeamento de cores para bagagens**
@@ -225,7 +270,7 @@ Perceptualmente uniforme
 
     Para os casos em que a equalização por histograma comum não funciona bem, como em imagens com grandes fundos brancos, pretendemos aplicar um método de histograma adaptativo. Nós esperamos que isso aumente o contraste dos elementos da imagem final.
 
-- **Testar novos mapeamentos de cores**
+- **Testar novos mapeamentos de cores e compará-los**
 
     Pretendemos apresentar mais testes com mapas de cores para ter uma maior base de comparação entre os resultados obtidos. Esses mapeamentos serão utilizados através da biblioteca Matplotlib.
 
