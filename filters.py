@@ -50,7 +50,7 @@ def average_filter(img_in, n):
 
 
 def median_filter(img_in, n):
-     """
+    """
     Apply a median filter of size n over img_in
 
     Parameters:
@@ -60,7 +60,7 @@ def median_filter(img_in, n):
     Returns:
         output img
     """
-
+    
     #get shape of matrix and allocate img_out
     x, y = np.shape(img_in)
     img_out = np.zeros((x, y))
