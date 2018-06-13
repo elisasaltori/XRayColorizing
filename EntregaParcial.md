@@ -130,7 +130,7 @@ Abaixo, estão os resultados da aplicação do filtro, com uma vizinhança de 7x
  <img src="https://raw.githubusercontent.com/elisasaltori/XRayColorizing/master/Test_Images/Sharpening_Filters/laplacian_7_3.png" height="300">
  </p>
  
- Como pode ser visto, não conseguimos obter um bom resultado com o filtro laplaciano. A imagem de saída é muito similar a de entrada e possui uma maior quantidade de ruído. O funcionamento do filtro será verificado para a próxima etapa.
+ Como pode ser visto, não conseguimos obter um bom resultado com o filtro laplaciano. A imagem de saída é muito similar a de entrada e possui uma maior quantidade de ruído. A implementação do filtro será verificada para a próxima etapa a procura de possíveis erros.
 
 ### Métodos de equalização
 
@@ -163,7 +163,7 @@ A equalização por histograma apresentou um comportamento adequado na maioria d
 
 O resultado pode ser dito, inclusive, pior que o da imagem original. 
 
-Portanto, embora o método do histograma tenha bons resultados para a maioria das imagens, devemos ter cuidado ao aplicá-la sobre todas. Pretendemos, na próxima etapa, buscar um método de equalização adaptativa com histogramas para tentar corrigir os mals casos da equalização por histograma comum.
+Portanto, embora o método do histograma tenha bons resultados para a maioria das imagens, devemos ter cuidado ao aplicá-la indiscriminadamente sobre todas. 
 
 
 ### Mapeamento de cores
@@ -261,15 +261,16 @@ As três imagens utilizam o filtro de mediana e a equalização por histograma. 
 Pode-se observar, tanto no caso das bagagens quanto da radiografia, que o inferno colormap fornece à imagem uma boa distinção entre seus elementos. 
 
 ## Próximos passos
-- **Aprimorar mapeamento de cores para bagagens**
+
+- **Verificar funcionamento de filtros já implementados**
+
+    Pela falta de efeito do filtro laplaciano, acreditamos que haja um erro em sua implementação. Procuraremos corrigi-lo a seguir.
+
+- **Aprimorar e testar novos mapeamentos de cores para bagagens**
 
     Como visto na discussão de resultados, o mapeamento implementado não funciona da forma esperada em todas as ocasiões. Será buscada uma nova estratégia de mapeamento de forma a se aproximar do resultado esperado, uma que não dependa apenas de thresholds sobre a intensidade da imagem.
-    Pretende-se, inicialmente, testar a técnica baseada em cossenos descrita em [1].
-
-- **Implementação do Equalização por Histograma Adaptativo**
-
-    Para os casos em que a equalização por histograma comum não funciona bem, como em imagens com grandes fundos brancos, pretendemos aplicar um método de histograma adaptativo. Nós esperamos que isso aumente o contraste dos elementos da imagem final.
-
+    Pretende-se, inicialmente, testar a técnica baseada em cossenos descrita em [1]. Será feita também uma tentativa de definição dos thresholds com base na análise do histograma da imagem.
+   
 - **Testar novos mapeamentos de cores e compará-los**
 
     Pretendemos apresentar mais testes com mapas de cores para ter uma maior base de comparação entre os resultados obtidos. Esses mapeamentos serão utilizados através da biblioteca Matplotlib.
