@@ -196,7 +196,7 @@ Foram então definidos limites simples inferiores e superiores sobre a intensida
 Esses valores foram obtidos por observação manual das intensidades de pixel em imagens de bagagem.
 
 Já os canais de saturação e valor foram definidos da seguinte forma:
-- **Saturação:** max(2*(255-img)/255.0, 1)
+- **Saturação:** min(2*(255-img)/255.0, 1)
 - **Valor:** img/255.0
     
 Os canais foram assim definidos para manter pixels brancos (intensidade 255) em seu estado original (com saturação 0 e valor 1) e a fim de dar mais destaque às intensidades médias e baixas na imagem (densidade de material média e alta). 
