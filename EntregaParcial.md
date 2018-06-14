@@ -179,7 +179,7 @@ Dentre esses, tanto o hot colormap quanto o inferno colormap são funções pron
 
 #### Colorização de bagagens
 
-Esse mapeamento é inspirado nos mecanismos utilizados por aeroportos no scan de imagens, como exemplificado em [2]. A função de mapeamento foi feita utilizando o sistema de cores HSV.
+Esse mapeamento é inspirado nos mecanismos utilizados por aeroportos no scan de imagens, como exemplificado em [1]. A função de mapeamento foi feita utilizando o sistema de cores HSV.
 
 Essa colorização utiliza três cores principais de acordo com o material encontrado:
 - **Laranja**: materiais orgânicos, de menor densidade.
@@ -269,7 +269,7 @@ Pode-se observar, tanto no caso das bagagens quanto da radiografia, que o infern
 - **Aprimorar e testar novos mapeamentos de cores para bagagens**
 
     Como visto na discussão de resultados, o mapeamento implementado não funciona da forma esperada em todas as ocasiões. Será buscada uma nova estratégia de mapeamento de forma a se aproximar do resultado esperado, uma que não dependa apenas de thresholds sobre a intensidade da imagem.
-    Pretende-se, inicialmente, testar a técnica baseada em cossenos descrita em [1]. Será feita também uma tentativa de definição dos thresholds com base na análise do histograma da imagem.
+    Pretende-se, inicialmente, examinar a possibilidade de definição dos thresholds com base na análise do histograma da imagem.
    
 - **Testar novos mapeamentos de cores e compará-los**
 
@@ -277,7 +277,4 @@ Pode-se observar, tanto no caso das bagagens quanto da radiografia, que o infern
 
 ## Referências
 
-[1]  KASE, Kannan. Effective Use of Color in X-ray Image Enhancement for
-Luggage Inspection. 2002. 30f. Dissertação de Mestrado - University of Tennessee, Knoxville, 2002.
-
-[2] How To Read An Airport Security X-Ray Image. Disponível em: < http://snallabolaget.com/how-to-read-an-airport-security-x-ray-image/ >. Acesso em: 12 jun. 2018.
+[1] How To Read An Airport Security X-Ray Image. Disponível em: < http://snallabolaget.com/how-to-read-an-airport-security-x-ray-image/ >. Acesso em: 12 jun. 2018.
