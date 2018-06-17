@@ -91,6 +91,15 @@ def inferno_colormap(img_in):
 
     return img_out
 
+def sine_colormap(img_in):
+    
+    x,y = np.shape(img_in)
+    img_out = np.zeros((x,y,3)).astype(np.uint8)
+    img_out[:,:,0] = np.sin(2*np.pi*img_out/255)+(np.pi/2) 
+    img_out[:,:,1] = np.sin(2*np.pi*img_out/255)+(np.pi/4)
+    img_out[:,:,2] = np.sin(2*np.pi*img_out/255)+(np.pi/6)  
+
+    return img_out
 
 def colorize_image(img_in, method):
 

@@ -104,7 +104,7 @@ def smoothing_filter(img_in, method, n, sigma=0.5):
         return gaussian_filter(img_in, n, sigma)
 
 
-def sharpening_filter(img_in, method, n, sigma=0.5):
+def sharpening_filter(img_in, method):
     """
     Apply a sharpening filter over given image
 
@@ -119,13 +119,15 @@ def sharpening_filter(img_in, method, n, sigma=0.5):
     """
 
     if(method==1):
-        return laplacian_filter(img_in, n, sigma)
+        return laplacian_filter(img_in)
 
     if(method==2):
         return sobel_op(img_in)
 
+    return img_in
 
-def laplacian_filter(img_in, n, sigma):
+
+def laplacian_filter(img_in):
     """
     Create a matrix corresponding to a Laplacian of Gaussian filter
 
@@ -134,31 +136,9 @@ def laplacian_filter(img_in, n, sigma):
         n: size of the filter (nxn matrix)
     """
 
-    f_matrix = np.zeros((n,n))
+    f_matrix = np.asarray( [ [0 , 1, 0], [1, -4, 1], [0, 1, 0] ])
 
-    #index of central position in matrix
-    c_pos = int(n/2)
-    if(n%2==0): #even-sized matrix
-        c_pos = c_pos-0.5 #center is between indices
-
-    #how much 1 unit displacement in index is worth in the "circle"
-    inc_factor = 5.0/(c_pos)
-
-    #begins building the filter
-    for i in range(0, n):
-        for j in range(0, n):
-            f_matrix[i][j] = ( (1 - ( (inc_factor*(i-c_pos))**2 + ((inc_factor*(j-c_pos))**2) ) / (2*sigma*sigma) ) 
-            * np.exp(-1*( (inc_factor*(i-c_pos))**2 + ((inc_factor*(j-c_pos))**2) )/(2*sigma*sigma)) )
-
-    #final filter operation
-    f_matrix *= -1.0/(np.pi*(sigma**4))
-
- 
-    #normalizing filter -1*(positives/negatives) for negative values
-    f_matrix[f_matrix<0] = f_matrix[f_matrix<0] *( -1.0*np.sum(f_matrix[f_matrix>0])/np.sum(f_matrix[f_matrix<0]) )
-
-
-    return img_in+frequency_filtering(img_in, f_matrix, n)
+    return img_in+frequency_filtering(img_in, f_matrix, 3)
 
 
 

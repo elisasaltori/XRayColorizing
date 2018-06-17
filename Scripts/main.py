@@ -28,11 +28,6 @@ def main_input():
 
     #sharpening filter
     sharpen_method = int(input()) #method number
-    sharpen_n = int(input()) #filter size
-    if(sharpen_method == 1): #laplacian filter
-        sharpen_sigma = float(input())
-    else:
-        sharpen_sigma = 0
 
     #equalization
     eq_method = int(input())
@@ -48,7 +43,7 @@ def main_input():
 
     img_out = ft.smoothing_filter(img, method=smooth_method, n=smooth_n, sigma=smooth_sigma)
     img_out = eq.equalize(img_out, 1)
-    img_out = ft.sharpening_filter(img, method=sharpen_method, n=sharpen_n, sigma=sharpen_sigma)
+    img_out = ft.sharpening_filter(img, method=sharpen_method)
 
     if(eq_method != 0):
 
@@ -89,17 +84,15 @@ def main():
 
     #sharpening filter
     sharpen_method = int(sys.argv[6]) #method number
-    sharpen_n = int(sys.argv[7]) #filter size
-    sharpen_sigma = float(sys.argv[8])
 
     #equalization
-    eq_method = int(sys.argv[9])
+    eq_method = int(sys.argv[7])
 
     #colorizing
-    color_method = int(sys.argv[10])
+    color_method = int(sys.argv[8])
 
     img_out = ft.smoothing_filter(img, method=smooth_method, n=smooth_n, sigma=smooth_sigma)
-    img_out = ft.sharpening_filter(img, method=sharpen_method, n=sharpen_n, sigma=sharpen_sigma)
+    img_out = ft.sharpening_filter(img, method=sharpen_method)
 
     if(eq_method != 0):
 
