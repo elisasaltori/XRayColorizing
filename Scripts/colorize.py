@@ -1,17 +1,17 @@
 import matplotlib.pyplot as plt
 import matplotlib as mat
 import numpy as np
+import thresholding as tr
 
-
-def baggage_colorize(img_in):
-    
+def baggage_colorize_fixed(img_in):
     #image dimensions
     x,y = np.shape(img_in)
 
-    #tresholds for color mapping using the HSV system
+    #thresholds for color mapping using the HSV system
     #mapping lighter intensity to orange, intermediate to green and high intensity to blue
-    low_tresh = 150
-    up_tresh = 215
+    #predefined thresholds
+    low_thresh = 150
+    up_thresh = 215
 
     rev = 255-img_in
     img_out = np.zeros((x,y,3))
@@ -21,18 +21,54 @@ def baggage_colorize(img_in):
 
     #defining hue
     #orange
-    img_out[img_out<low_tresh]=47.0/360.0
+    img_out[img_out<low_thresh]=47.0/360.0
     #blue
-    img_out[img_out>=up_tresh]=236.0/360.0 
+    img_out[img_out>=up_thresh]=236.0/360.0 
     #green
-    img_out[img_out>=low_tresh]=100.0/360.0
+    img_out[img_out>=low_thresh]=100.0/360.0
     
 
     value = np.copy(img_in).astype(float)
    
 
-    img_out[:,:,1]=rev/255.0*2 #saturation
-    img_out[:,:,2]=img_in/255.0 #value
+    img_out[:,:,1]=rev/255.0*1.5 #saturation
+    img_out[:,:,2]=img_in/255.0*0.95 #value
+
+    img_out = mat.colors.hsv_to_rgb(img_out)
+
+    return img_out
+
+
+def baggage_colorize(img_in):
+    
+    #image dimensions
+    x,y = np.shape(img_in)
+
+    #thresholds for color mapping using the HSV system
+    #mapping lighter intensity to orange, intermediate to green and high intensity to blue
+    #uses otsu method for defining thresholds
+    low_thresh, up_thresh = tr.otsu_method_three(img_in)
+
+    rev = 255-img_in
+    img_out = np.zeros((x,y,3))
+
+
+    img_out[:,:,0]=rev
+
+    #defining hue
+    #orange
+    img_out[img_out<low_thresh]=47.0/360.0
+    #blue
+    img_out[img_out>=up_thresh]=236.0/360.0 
+    #green
+    img_out[img_out>=low_thresh]=100.0/360.0
+    
+
+    value = np.copy(img_in).astype(float)
+   
+
+    img_out[:,:,1]=rev/255.0*1.5 #saturation
+    img_out[:,:,2]=img_in/255.0*0.95 #value
 
     img_out = mat.colors.hsv_to_rgb(img_out)
 
@@ -57,6 +93,9 @@ def inferno_colormap(img_in):
 
 
 def colorize_image(img_in, method):
+
+    if (method==0):
+        return baggage_colorize_fixed(img_in)
 
     if (method==1):
         return baggage_colorize(img_in)

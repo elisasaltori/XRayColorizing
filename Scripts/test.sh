@@ -14,7 +14,7 @@ then
             do
                 for l in `seq 1 3`
                 do
-                    for m in `seq 1 2`
+                    for m in `seq 0 2`
                     do
                         NAME="$j$k$l$m"
                         python3 main.py "$NAME" "$FULL" "$j" "$2" "$3" "$k" "$4" "$5" "$m" "$l"

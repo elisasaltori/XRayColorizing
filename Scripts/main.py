@@ -64,7 +64,6 @@ def main_input():
     plt.subplot(132)
     plt.imshow(img_out, cmap="gray")
 
-    
     img_out = cl.colorize_image(img_out.astype(np.uint8), color_method)
     plt.subplot(133)
     plt.imshow(img_out)
