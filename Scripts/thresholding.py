@@ -1,36 +1,8 @@
 """
-
+Thresholding method, used in one of the baggage colorizing methods
 """
 import numpy as np
 import matplotlib.pyplot as plt
-
-def otsu_method(img_in):
-
-    print("beginning otsu")
-    #building cumulative histogram
-    hist, bin_edg = np.histogram(img_in, 256, (0,256))
-    hist = hist/np.size(img_in) #probability
-
-    level = 0
-    w0 = 0
-    sum0 = 0
-    max_var = 0
-    sum1 = np.sum(np.multiply(list(range(0,256)), hist))
-
-    for i in range(0,256):
-        w0 = w0 + hist[i];
-        w1 = 1 - w0
-        if(w0==0 or w1 == 0):
-            continue
-        sum0 = sum0 + i * hist[i]
-        m1 = (sum1 - sum0) /w1
-        var = w0 * w1 * ((sum0/w0) - m1) * ((sum0/w0) - m1)
-        if(var > max_var):
-            level = i
-            max_var = var
-
-    print(level)
-    return level
 
 def otsu_method_three(img_in):
     """

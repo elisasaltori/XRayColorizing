@@ -1,7 +1,18 @@
+"""
+Contains normalization and equalization methods
+"""
 import numpy as np
 
-def equalize(img_in, method):
 
+def equalize(img_in, method):
+    """
+    Normalize or histogram equalize an image
+
+    input:
+        img_in: input image
+        method: number of desired method
+    """
+    
     if (method==1):
         return normalize(img_in)
     if (method==2):

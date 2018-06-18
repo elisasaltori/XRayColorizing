@@ -4,6 +4,16 @@ import numpy as np
 import thresholding as tr
 
 def baggage_colorize_fixed(img_in):
+    """
+    Colorize an image using predefined thresholds.
+    Colors:
+        blue: higher density objects
+        green: medium density objects
+        orange: low density objects
+
+    input:
+        img_in - input image
+    """
     #image dimensions
     x,y = np.shape(img_in)
 
@@ -40,7 +50,17 @@ def baggage_colorize_fixed(img_in):
 
 
 def baggage_colorize(img_in):
-    
+    """
+    Colorize an image using thresholds defined by a 3 level multi otsu method.
+    Colors:
+        blue: higher density objects
+        green: medium density objects
+        orange: low density objects
+
+    input:
+        img_in - input image
+    """
+
     #image dimensions
     x,y = np.shape(img_in)
 
@@ -76,6 +96,13 @@ def baggage_colorize(img_in):
 
 
 def hot_colormap(img_in):
+    """
+    Colorize an image using the matplotlib colormap Hot.
+    Hot is a sequencial colormap.
+
+    input:
+        img_in - input image
+    """
     
     x,y = np.shape(img_in)
     img_out = np.zeros((x,y,3)).astype(np.uint8)
@@ -84,33 +111,80 @@ def hot_colormap(img_in):
     return img_out
 
 def inferno_colormap(img_in):
+    """
+    Colorize an image using the matplotlib colormap Inferno.
+    Inferno is a perceptually uniform colormap.
 
+    input:
+        img_in - input image
+    """
     x,y = np.shape(img_in)
     img_out = np.zeros((x,y,3)).astype(np.uint8)
     img_out = plt.cm.inferno(img_in)
 
     return img_out
 
-def sine_colormap(img_in):
-    
+def spectral_colormap(img_in):
+    """
+    Colorize an image using the matplotlib colormap Spectral.
+    Spectral is a diverging colormap.
+
+    input:
+        img_in - input image
+    """
     x,y = np.shape(img_in)
     img_out = np.zeros((x,y,3)).astype(np.uint8)
-    img_out[:,:,0] = np.sin(2*np.pi*img_out/255)+(np.pi/2) 
-    img_out[:,:,1] = np.sin(2*np.pi*img_out/255)+(np.pi/4)
-    img_out[:,:,2] = np.sin(2*np.pi*img_out/255)+(np.pi/6)  
+    img_out = plt.cm.Spectral(img_in)
 
     return img_out
 
-def colorize_image(img_in, method):
 
+def sine_colormap(img_in):
+    """
+    Colorize an image using an RGB sine colormap which highlights high-density
+    threats. As seen on the masters thesis by Kannan Kase (2002)
+
+    input:
+        img_in - input image
+    """    
+    x,y = np.shape(img_in)
+    img_out = np.zeros((x,y,3))
+   
+    img_out[:,:,0] = np.fabs((np.sin(0.666667*np.pi*img_in/255-0.02*np.pi)))
+    img_out[:,:,1] = np.fabs((np.sin(0.666667*np.pi*img_in/255-1.2*np.pi)))
+    img_out[:,:,2] = np.fabs((np.sin(0.666667*np.pi*img_in/255-1.3333*np.pi)))
+    
+    return img_out
+
+
+def colorize_image(img_in, method):
+    """
+    Colorize a grayscale image using the method selected.
+    Methods 0-2 are specialized for use in baggages.
+    Methods 3-5 are generic and can be used for any image.
+
+    Parameters:
+        img_in: input image
+        method: number of desired method
+
+    Output:
+        colorized image
+    """
     if (method==0):
         return baggage_colorize_fixed(img_in)
 
     if (method==1):
         return baggage_colorize(img_in)
 
-    if (method==2):
+    if(method==2):
+        return sine_colormap(img_in)
+
+    if (method==3):
         return hot_colormap(img_in)
 
-    if(method==3):
+    if(method==4):
         return inferno_colormap(img_in)
+
+    if(method==5):
+        return spectral_colormap(img_in)
+   

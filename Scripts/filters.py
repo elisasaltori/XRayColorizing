@@ -111,8 +111,6 @@ def sharpening_filter(img_in, method):
     Parameters:
         img_in: input image
         method: number of desired method
-        n: size of filter
-        sigma: standard deviation (used in laplacian filter)
     
     Returns:
         output image
