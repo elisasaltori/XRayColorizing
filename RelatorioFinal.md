@@ -268,7 +268,7 @@ Os resultados dessa colorização serão discutidos na seção de resultados.
 
  #### Metódo 2: Colorização de bagagem com thresholds variáveis
  
- Esse método de colorização aplica as mesmas formas de mapeamento que o método 1, descrito na seção acima. Sua principal diferença está na definição dos thresholds, que, neste método, são obtidos por uma técnica de segmentação de imagem: o método multi otsu.
+ Esse método de colorização aplica as mesmas formas de mapeamento que o método 1, descrito na seção acima. Sua única diferença está na definição dos thresholds, que, neste método, são obtidos por uma técnica de segmentação de imagem: o método multi otsu.
  
  O método de otsu é um método de segmentação de imagem que busca maximizar a variância entre classes, baseando-se no histograma da imagem. O método de otsu foi criado inicialmente para a segmentação da imagem em apenas duas partes, o que não seria adequado para a colorização visada, já que, como indicado no método 1, buscamos distinguir entre três níveis de densidade de objetos. Utilizamos, então, uma expansão do método, multi otsu's method [3], para o tratamento de três níveis na imagem.
  
@@ -276,10 +276,103 @@ Os resultados dessa colorização serão discutidos na seção de resultados.
  
  Abaixo, temos alguns exemplos da aplicação do método. Seus resultados serão discutidos posteriormente, comparando-os aos dos demais métodos de colorização.
  
+ <p float="left" align="middle">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/test.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/sobel_color1.png" height="300">
+  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/B0011_0001.png_1212.png" height="300">
+ </p>
+ 
  #### Metódo 3: Colorização de bagagem com funções seno
- #### Metódo 4: Colormap Hot 
- #### Método 5: Colormap Inferno
- #### Método 6: Colormap Spectral
+ 
+ Esse método de colorização foi desenvolvido por Kase[2]. Esse método, diferentemente dos dois anteriores, não busca segmentar a imagem em três níveis distintos para a colorização, utilizando funções trignométricas simples para mapeamento das intensidades de cinza nos canais RGB.
+ 
+ Ele é apresentado aqui como uma técnica alternativa de mapeamento, buscando contrastar com a abordagem das duas primeiras.
+ 
+ Suas funções de mapeamento são dadas a seguir:
+ 
+ ```
+    canal R = np.fabs((np.sin(0.666667*np.pi*img_in/255-0.02*np.pi)))
+    canal G = np.fabs((np.sin(0.666667*np.pi*img_in/255-1.2*np.pi)))
+    canal B = np.fabs((np.sin(0.666667*np.pi*img_in/255-1.3333*np.pi)))
+ ```
+ Exemplos de aplicação:
+ <p float="left" align="middle">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/test.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/sobel_color1.png" height="300">
+  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/B0011_0001.png_1212.png" height="300">
+ </p>
+ 
+ #### Método 4: Hot colormap
+ 
+Esse é o primeiro método genérico apresentado aqui, obtido da biblioteca matplotlib. Os três métodos dessa biblioteca aqui apresentados possuem características distintas na sua composição de cores e foram selecionados para que os resultados obtidos com elas pudessem ser melhor contrastados.
+
+Esses colormaps genéricos pré-implementados serão utilizados nos resultados para a colorização de radiografias.
+
+O hot colormap é um mapa de cores sequencial, utilizando, como seu nome indica, cores quentes, como amarelo e vermelho.
+
+Podemos ver abaixo alguns exemplos de sua aplicação.
+
+-**Bagagem:**
+<p float="left" align="middle">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/B0011_0001.png_1222.png" height="300">
+ </p>
+ 
+ A imagem acima utiliza o operador sobel e a equalização por histograma.
+ 
+ -**Radiografias:**
+<p float="left" align="middle">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/00000013_026.png_1122.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/00000013_026.png_1222.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/00000132_002.png_1121.png" height="300">
+ </p>
+ 
+ As três imagens utilizam o filtro de mediana e a equalização por histograma. A primeira e a terceira utilizam o filtro laplaciano, enquanto que a segunda utiliza o operador sobel.
+
+#### Método 5: Inferno colormap
+
+O inferno colormap é o segundo método genérico apresentado. Trata-se de um mapa perceptualmente uniforme, facilitando a distinção de elementos em qualquer ponto de sua escala.
+
+Podemos ver abaixo alguns exemplos de sua aplicação. 
+
+-**Bagagens:**
+<p float="left" align="middle">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/B0011_0001.png_1232.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/B0023_0001.png_2232.png" height="300">
+ </p>
+ 
+ Ambas as imagens utilizam o filtro de mediana, o operador sobel e a equalização por histograma.
+ 
+ -**Radiografias:**
+<p float="left" align="middle">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/00000013_026.png_1132.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/00000013_026.png_1232.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/00000132_002.png_1131.png" height="300">
+ </p>
+
+As três imagens utilizam o filtro de mediana e a equalização por histograma. A primeira e a terceira utilizam o filtro laplaciano, enquanto que a segunda utiliza o operador sobel.
+
+Pode-se observar, tanto no caso das bagagens quanto da radiografia, que o inferno colormap fornece à imagem uma boa distinção entre seus elementos. 
+
+ #### Método 6: Spectral colormap
+ 
+ O último dos mapeamentos genéricos obtidos da biblioteca matplotlib, o spectral colormap é um mapeamento divergente.
+ 
+ Podemos ver abaixo alguns exemplos de sua aplicação. 
+
+-**Bagagens:**
+<p float="left" align="middle">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/B0011_0001.png_1232.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/B0023_0001.png_2232.png" height="300">
+ </p>
+ 
+ 
+ -**Radiografias:**
+<p float="left" align="middle">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/00000013_026.png_1132.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/00000013_026.png_1232.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/00000132_002.png_1131.png" height="300">
+ </p>
+
  
  ## Resultados
  
