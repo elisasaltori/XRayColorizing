@@ -405,25 +405,41 @@ As duas últimas imagens tiveram o operador sobel aplicado. As três imagens pas
  
  #### Comparação entre métodos de threshold fixo e de threshold variável
  
+ O uso de thresholds fixos ou variáveis apresenta suas vantagens e desvantagens. Apresentamos abaixo quatro exemplos de imagens lado ao lado utilizando os dois métodos. À esquerda, temos as imagens colorizadas com o método 1 (de thresholds fixos) e, à direita, temos as colorizadas com o método 2 (de thresholds variáveis). Em seguida, analisaremos os casos em que os métodos têm melhor ou pior desempenho.
+ 
+ **Exemplo 1**
  <p float="left" align="middle">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_0/B0044_0001.png_1001.png" height="300">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_1/B0044_0001.png_1011.png" height="300">
  </p>
  
+ **Exemplo 2**
   <p float="left" align="middle">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_0/B0016_0001.png_2001.png" height="300">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_1/B0016_0001.png_2011.png" height="300">
  </p>
  
+ **Exemplo 3**
 <p float="left" align="middle">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_0/B0026_0001.png_2002.png" height="300">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_1/B0026_0001.png_2012.png" height="300">
  </p>
 
+**Exemplo 4**
 <p float="left" align="middle">
 <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_0/B0029_0001.png_2002.png" height="300">
 <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_1/B0029_0001.png_2012.png" height="300">
  </p>
+
+ 
+ O threshold variável, definido com o método de segmentação, apresenta de fato um comportamento mais adaptável que o método de colorização com thresholds fixos. Ele possui maior sucesso na detecção de objetos de maior densidade, principalmente quando se utiliza uma imagem de menor qualidade final, em que esses objetos possuem intensidades de cinza mais claras que o esperado. 
+ 
+ Isso pode ser observado principalmente nos exemplos 3 e 4. No exemplo 3, o método de thresholds consegue delimitar completamente a arma e o celular presentes na arma, enquanto que o de thresholds fixos os fragmenta inadequadamente. Já no exemplo 4, embora o método de thresholds variáveis falhe de forma similar ao método de thresholds fixo ao fragmentar a arma, ele obtém sucesso ao identificar corretamente os limites da placa e dos zippers. 
+ 
+ No entanto, o método de thresholds variáveis não funciona muito bem na maioria dos casos para a identificação da camada de densidade intermediária, pintada de verda nas imagens. Nos exemplos 2 e 3, quase todo o conteúdo da mala é colorido de verde, mesmo não havendo nenhum objeto naquela região. Uma possível causa desse comportamento é a falta de uma divisão clara para objetos de densidade intermediária nas imagens utilizadas: quase todas possuem apenas objetos metálicos, de alta densidade, sem objetos plásticos ou orgânicos.
+ 
+ Nesses casos, o método de thresholds fixos possui algumas vezes um funcionamento em comparação melhor, como no exemplo 1, em que a camada verde limita-se a cabos e a dobras da mochila com maior densidade.
+
 
  #### Uso do operador sobel
  
