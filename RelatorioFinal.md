@@ -400,10 +400,31 @@ As duas últimas imagens tiveram o operador sobel aplicado. As três imagens pas
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_2/B0011_0001.png_2021.png" height="300">
  </p>
  
- -casos em que segmentação não funciona tão bem, método de senos também não funciona tão bem assim
+ -casos em que segmentação não funciona tão bem, método de senos também não funciona tão bem assim, mas aparenta dar mais destaque
+ -cor muito brilhante dificulta identificar detalhes do próprio objeto
  
  #### Comparação entre métodos de threshold fixo e de threshold variável
  
+ <p float="left" align="middle">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_0/B0044_0001.png_1001.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_1/B0044_0001.png_1011.png" height="300">
+ </p>
+ 
+  <p float="left" align="middle">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_0/B0016_0001.png_2001.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_1/B0016_0001.png_2011.png" height="300">
+ </p>
+ 
+<p float="left" align="middle">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_0/B0026_0001.png_2002.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_1/B0026_0001.png_2012.png" height="300">
+ </p>
+
+<p float="left" align="middle">
+<img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_0/B0029_0001.png_2002.png" height="300">
+<img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_1/B0029_0001.png_2012.png" height="300">
+ </p>
+
  #### Uso do operador sobel
  
  ### Radiografias
