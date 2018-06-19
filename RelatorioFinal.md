@@ -427,6 +427,30 @@ As duas últimas imagens tiveram o operador sobel aplicado. As três imagens pas
 
  #### Uso do operador sobel
  
+ O operador sobel tem um comportamento variável quando aplicado às imagens de bagagens. Temos casos em que o realce de bordas fornecido por ele destaca bem os itens da figura, tornando ainda mais distinta a presença de objetos perigosos. Exemplos dessas imagens são dados logo abaixo: 
+ 
+<p float="left" align="middle">
+<img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_0/B0023_0001.png_2202.png" height="300">
+<img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_1/B0026_0001.png_2212.png" height="300">
+ </p>
+ 
+ A primeira imagem utiliza o método 1 de colorização (thresholds fixos), enquanto a segunda imagem utiliza o método 2 (thresholds variáveis).
+
+No entanto, como consequência do realce de bordas, o operador sobel em alguns casos intensifica demasiadamente ruídos já presentes na imagem. Isso pode ser observado na imagem abaixo:
+
+<p float="left" align="middle">
+<img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_1/B0011_0001.png_2212.png" height="300">
+ </p>
+
+O operador sobel também tende a não funcionar bem com imagens que obtêm um mal resultado com a equalização por histograma. Como exemplo, temos as imagens a seguir:
+
+<p float="left" align="middle">
+<img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_1/B0009_0001.png_2212.png" height="300">
+<img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_2/B0009_0001.png_2222.png" height="300">
+ </p>
+ 
+ Ambas as imagens têm a mesma imagem original,tendo a primeira sido colorizada com o método 1 (thresholds variáveis) e a segunda colorizada com o método 2 (senos). Como pode ser visto, como a equalização não consegue aumentar de forma eficaz o contraste da imagem, obtemos com o operador sobel um resultado final escuro, que não é bem colorizado pelos métodos que possuímos.
+ 
  ### Radiografias
  
  #### Comparação entre métodos
