@@ -192,14 +192,6 @@ Há duas opções nessa etapa:
 
 Nesse método, temos um simples "alargamento" do contraste, mapeando os valores da imagem de forma que sua menor intensidade seja 0 e sua maior seja 255. A normalização não há nenhum efeito, portanto, se o intervalo original das imagem já for de 0 a 255.
 
-Abaixo, temos um exemplo de aplicação da normalização:
-
-- **Imagem original (esquerda) vs normalização da imagem (direita):**
- <p float="left" align="middle">
- <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Sample_Images/Chest_Xrays/00000013_026.png" height="300">
- <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Histogram/compare_chest_hist/00000013_026.png_1121_grey.png" height="300">
- </p>
-
 #### Equalização por histograma
 
 A equalização por histograma aumenta o contraste global da imagem, melhor distribuindo suas intensidades. 
@@ -234,10 +226,56 @@ Portanto, embora o método do histograma tenha bons resultados para a maioria da
  
  Como última etapa do processo, temos a colorização da imagem. Nesse passo, obtemos uma imagem de 3 camadas, correspendentes cada uma a um dos canais RGB.
 
-Nessa etapa, procuramos aplicar uma 
+Nessa etapa, procuramos aplicar uma variedade de métodos a fim de comparar os resultados obtidos.
+
+Os três primeiros métodos descritos foram feitos exclusivamente para a aplicação em raios-x de bagagens. Os três últimos são colormaps genéricos, obtidos da biblioteca matplotlib.
  
  #### Metódo 1: Colorização de bagagem com thresholds fixos
+ 
+ Esse mapeamento é inspirado nos mecanismos utilizados por aeroportos no scan de imagens, como exemplificado em [1]. Um mapeamento semelhante é feito no método 2, mas com thresholds variáveis.
+ 
+ A função de mapeamento foi feita utilizando o sistema de cores HSV.
+
+Essa colorização utiliza três cores principais de acordo com o material encontrado:
+- **Laranja**: materiais orgânicos, de menor densidade.
+- **Verde**: materiais plásticos, de densidade média.
+- **Azul**: materiais duros, como metal.
+
+Na definição da matiz de um pixel, então, foi considerada que a intensidade de um pixel é inversamente proporcional à densidade do material: um pixel de menor intensidade (mais escuro) representa uma densidade maior e vice versa.
+
+Foram então definidos limites simples inferiores e superiores sobre a intensidade dos pixels para a definição de sua matiz (laranja, verde ou azul):
+- **Azul:** 0 a 40 (Matiz = 236/360)
+- **Verde:** 41 a 105 (Matiz = 100/360)
+- **Laranja:** 106 a 255 (Matiz = 47/360)
+
+Esses valores foram obtidos por observação manual das intensidades de pixel em imagens de bagagem.
+
+Já os canais de saturação e valor foram definidos da seguinte forma:
+- **Saturação:** min(2*(255-img)/255.0, 1)
+- **Valor:** img/255.0
+    
+Os canais foram assim definidos para manter pixels brancos (intensidade 255) em seu estado original (com saturação 0 e valor 1) e a fim de dar mais destaque às intensidades médias e baixas na imagem (densidade de material média e alta). 
+
+Abaixo temos três exemplos da aplicação do mapamento (os dois últimos com a aplicação do operador sobel):
+
+<p float="left" align="middle">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/test.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/sobel_color1.png" height="300">
+  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/B0011_0001.png_1212.png" height="300">
+ </p>
+
+Os resultados dessa colorização serão discutidos na seção de resultados.
+
  #### Metódo 2: Colorização de bagagem com thresholds variáveis
+ 
+ Esse método de colorização aplica as mesmas formas de mapeamento que o método 1, descrito na seção acima. Sua principal diferença está na definição dos thresholds, que, neste método, são obtidos por uma técnica de segmentação de imagem: o método multi otsu.
+ 
+ O método de otsu é um método de segmentação de imagem que busca maximizar a variância entre classes, baseando-se no histograma da imagem. O método de otsu foi criado inicialmente para a segmentação da imagem em apenas duas partes, o que não seria adequado para a colorização visada, já que, como indicado no método 1, buscamos distinguir entre três níveis de densidade de objetos. Utilizamos, então, uma expansão do método, multi otsu's method [3], para o tratamento de três níveis na imagem.
+ 
+ Decidimos implementar essa variação do método 1, com thresholds variáveis, com o objetivo de tornar a colorização de bagagens mais adaptável às características de uma determinada imagem, para qual a aplicação de um threshold fixo pode ser inadequada.
+ 
+ Abaixo, temos alguns exemplos da aplicação do método. Seus resultados serão discutidos posteriormente, comparando-os aos dos demais métodos de colorização.
+ 
  #### Metódo 3: Colorização de bagagem com funções seno
  #### Metódo 4: Colormap Hot 
  #### Método 5: Colormap Inferno
@@ -248,3 +286,11 @@ Nessa etapa, procuramos aplicar uma
  ### Imagens de bagagens
  
  ### Radiografias
+ 
+ ## Referências
+
+[1] How To Read An Airport Security X-Ray Image. Disponível em: < http://snallabolaget.com/how-to-read-an-airport-security-x-ray-image/ >. Acesso em: 12 jun. 2018.
+
+[2] KASE, Kannan. Effective Use of Color in X-ray Image Enhancement for Luggage Inspection. 2002. 30f. Dissertação de Mestrado - University of Tennessee, Knoxville, 2002.
+
+[3] Deng-Yuan Huang, Ta-Wei Lin, Wu-Chih Hu, Automatic Multilevel Thresholding Based on Two-Stage Otsu's Method with Cluster Determination by Valley Estimation, Int. Journal of Innovative Computing, 2011.
