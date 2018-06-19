@@ -364,20 +364,13 @@ Pode-se observar, tanto no caso das bagagens quanto da radiografia, que o infern
  
  Podemos ver abaixo alguns exemplos de sua aplicação. 
 
--**Bagagens:**
 <p float="left" align="middle">
- <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/B0011_0001.png_1232.png" height="300">
- <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/B0023_0001.png_2232.png" height="300">
- </p>
- 
- 
- -**Radiografias:**
-<p float="left" align="middle">
- <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/00000013_026.png_1132.png" height="300">
- <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/00000013_026.png_1232.png" height="300">
- <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/00000132_002.png_1131.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/spectral/00000013_026.png_2052.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/spectral/00000099_003.png_2252.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/spectral/00000239_003.png_2252.png" height="300">
  </p>
 
+As duas últimas imagens tiveram o operador sobel aplicado. As três imagens passaram pela equalização por histograma.
  
  ## Resultados
  
