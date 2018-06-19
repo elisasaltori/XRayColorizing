@@ -277,10 +277,12 @@ Os resultados dessa colorização serão discutidos na seção de resultados.
  Abaixo, temos alguns exemplos da aplicação do método. Seus resultados serão discutidos posteriormente, comparando-os aos dos demais métodos de colorização.
  
  <p float="left" align="middle">
- <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/test.png" height="300">
- <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/sobel_color1.png" height="300">
-  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/B0011_0001.png_1212.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_1/B0009_0001.png_2011.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_1/B0011_0001.png_2011.png" height="300">
+  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_1/B0023_0001.png_1212.png" height="300">
  </p>
+ 
+ As duas primeiras imagens passaram apenas pela suavização pelo filtro de mediana e pela normalização. A última imagem passou, ademais dos métodos indicados para as duas primeiras imagens, pelo operador sobel e a equalização por histograma.
  
  #### Metódo 3: Colorização de bagagem com funções seno
  
@@ -297,10 +299,13 @@ Os resultados dessa colorização serão discutidos na seção de resultados.
  ```
  Exemplos de aplicação:
  <p float="left" align="middle">
- <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/test.png" height="300">
- <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/sobel_color1.png" height="300">
-  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/B0011_0001.png_1212.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_2/B0009_0001.png_2020.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_2/B0011_0001.png_1222.png" height="300">
+  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_2/B0023_0001.png_2222.png" height="300">
  </p>
+ 
+ As duas últimas imagens tiveram o operador sobel e a equalização por histogramas aplicada, enquanto que a primeira teve somente a normalização aplicada.
+ 
  
  #### Método 4: Hot colormap
  
