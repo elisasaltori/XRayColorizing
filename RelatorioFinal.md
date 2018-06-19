@@ -164,7 +164,7 @@ Abaixo, estão os resultados da aplicação do filtro, com uma vizinhança de 3x
   
   Como visto acima, o operador sobel apresentou um comportamento interessante para a distinção de elementos no raio-x da bagagem, destacando os diversos objetos na mala, que poderá ser útil na composição final da imagem.
   
-  Já na imagem da radiografia, percebe-se também um aumento significativo no destaque das bordas. No entanto, foi considerado que a mudança provocada pelo efeito possa prejudicar o diagnóstico médico, uma vez que a imagem final é razoavelmente distinta da original, com a qual os profissionais médicos estão acostumados a trabalhar.
+  Já na imagem da radiografia, percebe-se também um aumento significativo no destaque das bordas. No entanto, é necessário tomar cuidado para que sua aplicação não gere artefatos que atrapalhem o diagnóstico por profissionais médicos.
 
 #### Filtro Laplaciano
 O filtro implementado é o laplaciano. Diferentemente do filtro Sobel, que se trata de um filtro de derivada de primeira ordem, o filtro laplaciano aproxima uma derivada de segunda ordem e, portanto, é mais sensível a ruído. Esse método foi aplicado para comparar sua atuação com o operador anterior.
@@ -376,7 +376,41 @@ As duas últimas imagens tiveram o operador sobel aplicado. As três imagens pas
  
  ### Imagens de bagagens
  
+ Discutiremos, primeiro, os resultados obtidos para as imagens de bagagens, correspondentes à aplicação dos três primeiros métodos de colorização. Faremos primeiro uma comparação geral entre os três métodos e, depois, compararemos mais a fundo os métodos de segmentação da imagem com thresholds.
+ 
+ #### Comparação entre métodos
+ 
+ 
+ 
+ **Colorização de bagagens: métodos 1, 2 e 3**
+<p float="left" align="middle">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_0/B0009_0001.png_2001.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_1/B0009_0001.png_2011.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_2/B0009_0001.png_2020.png" height="300">
+ </p>
+ 
+ - boa identificação de objetos de alta densidade
+ - similaridade entre média densidade de threshold fixo e mapeamento por senos
+ - cor mais brilhante dos senos talvez distraia de objetos que não sejam de tão alta densidade
+ 
+  **Colorização de bagagens: métodos 1, 2 e 3**
+<p float="left" align="middle">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_0/B0011_0001.png_2001.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_1/B0011_0001.png_2011.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_2/B0011_0001.png_2021.png" height="300">
+ </p>
+ 
+ -casos em que segmentação não funciona tão bem, método de senos também não funciona tão bem assim
+ 
+ #### Comparação entre métodos de threshold fixo e de threshold variável
+ 
+ #### Uso do operador sobel
+ 
  ### Radiografias
+ 
+ #### Comparação entre métodos
+ 
+ #### Uso do operador sobel
  
  ## Referências
 
