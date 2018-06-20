@@ -380,28 +380,30 @@ As duas últimas imagens tiveram o operador sobel aplicado. As três imagens pas
  
  #### Comparação entre métodos
  
+ Temos abaixo alguns exemplos da aplicação dos métodos 1 (thresholds fixos), 2 (thresholds variáveis) e 3 (senos). 
  
- 
- **Colorização de bagagens: métodos 1, 2 e 3**
+ **Exemplo 1: Colorização de bagagens: métodos 1, 2 e 3**
 <p float="left" align="middle">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_0/B0009_0001.png_2001.png" height="300">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_1/B0009_0001.png_2011.png" height="300">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_2/B0009_0001.png_2020.png" height="300">
  </p>
- 
- - boa identificação de objetos de alta densidade
- - similaridade entre média densidade de threshold fixo e mapeamento por senos
- - cor mais brilhante dos senos talvez distraia de objetos que não sejam de tão alta densidade
- 
-  **Colorização de bagagens: métodos 1, 2 e 3**
+
+  **Exemplo 2: Colorização de bagagens: métodos 1, 2 e 3**
 <p float="left" align="middle">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_0/B0011_0001.png_2001.png" height="300">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_1/B0011_0001.png_2011.png" height="300">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/Color_Bags/Method_2/B0011_0001.png_2021.png" height="300">
  </p>
  
- -casos em que segmentação não funciona tão bem, método de senos também não funciona tão bem assim, mas aparenta dar mais destaque
- -cor muito brilhante dificulta identificar detalhes do próprio objeto
+ A partir das figuras acima, observamos nos três métodos uma boa identificação de objetos de alta densidade. No entanto, como a colorização com o método 2 (senos) fornece um mapeamento com funções contínuas, não temos uma fragmentação de objetos como ocorre no exemplo 2 nos métodos de thresholds (visível na delimitação da arma).
+ 
+ Como ponto negativo do uso do método dos senos frente aos dos thresholds, temos uma menor diferenciação das camadas intermediárias da imagem, como os zippers no canto esquerdo do exemplo 2, que foram corretamente delimitados pelo método de thresholds variáveis.
+ 
+ A cor mais brilhante do método dos senos também pode possivelmente distrair o leitor de ameaças que não sejam de tão alta densidade, enquanto que os métodos de thresholds formam uma imagem um pouco mais uniforme em seu contraste. O uso da colorização por senos pode ser, entretanto, interessante para casos em que os objetos de interesse sejam justamente objetos de alta densidade. 
+ 
+ A seguir, faremos uma comparação mais específica entre os dois métodos de thresholds implementados.
+
  
  #### Comparação entre métodos de threshold fixo e de threshold variável
  
