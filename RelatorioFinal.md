@@ -473,8 +473,31 @@ O operador sobel também tende a não funcionar bem com imagens que obtêm um ma
  
  #### Comparação entre métodos
  
- #### Uso do operador sobel
+ <p float="left" align="middle">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/hot/00000099_003.png_2032.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/inferno/00000099_003.png_2042.png" height="300">
+  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/spectral/00000099_003.png_2052.png" height="300">
+ </p>
+ <p float="left" align="middle">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/hot/00003899_002.png_2032.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/inferno/00003899_002.png_2042.png" height="300">
+  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/spectral/00003899_002.png_2052.png" height="300">
+ </p>
+  <p float="left" align="middle">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/hot/00000132_002.png_2232.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/inferno/00000132_002.png_2242.png" height="300">
+  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/spectral/00000132_002.png_2252.png" height="300">
+ </p>
  
+ #### Uso do operador sobel
+ <p float="left" align="middle">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/inferno/00003896_005.png_2042.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/inferno/00003896_005.png_2242.png" height="300">
+ </p>
+ <p float="left" align="middle">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/inferno/00003989_024.png_2042.png" height="300">
+ <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/inferno/00003989_024.png_2242.png" height="300">
+ </p>
  ## Referências
 
 [1] How To Read An Airport Security X-Ray Image. Disponível em: < http://snallabolaget.com/how-to-read-an-airport-security-x-ray-image/ >. Acesso em: 12 jun. 2018.
