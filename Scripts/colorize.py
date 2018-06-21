@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import matplotlib as mat
 import numpy as np
-import thresholding as tr
+from . import thresholding as tr
 
 def baggage_colorize_fixed(img_in):
     """
