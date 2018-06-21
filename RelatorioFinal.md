@@ -473,31 +473,53 @@ O operador sobel também tende a não funcionar bem com imagens que obtêm um ma
  
  #### Comparação entre métodos
  
+ 
+ 
+ **Exemplo 1: colormaps hot, inferno e spectral**
  <p float="left" align="middle">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/hot/00000099_003.png_2032.png" height="300">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/inferno/00000099_003.png_2042.png" height="300">
   <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/spectral/00000099_003.png_2052.png" height="300">
  </p>
+  **Exemplo 2:**
  <p float="left" align="middle">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/hot/00003899_002.png_2032.png" height="300">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/inferno/00003899_002.png_2042.png" height="300">
   <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/spectral/00003899_002.png_2052.png" height="300">
  </p>
+   **Exemplo 3:**
   <p float="left" align="middle">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/hot/00000132_002.png_2232.png" height="300">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/inferno/00000132_002.png_2242.png" height="300">
   <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/spectral/00000132_002.png_2252.png" height="300">
  </p>
  
+ - hot: desvantagem - difícil de ver partes mais claras da imagem, muito brilhante
+ - inferno: mais dintinguíveis, perceptualmente uniforme, então pode-se notar melhor características em qualquer intensidade
+ - spectral: melhor para perceber detalhes em partes que o colormap hot deixa claro demais, mas cor vermelha distraí para o fundo
+  tons esverdeados com vermelho poderiam ser um problema também para daltônicos
+  
+  Inferno é o melhor, com aspecto mais agradável e maior distinção de características
+ 
  #### Uso do operador sobel
+   **Exemplo 1: sem aplicação do operador sobel (esquerda) e com o operador sobel (direita)**
  <p float="left" align="middle">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/inferno/00003896_005.png_2042.png" height="300">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/inferno/00003896_005.png_2242.png" height="300">
  </p>
+   **Exemplo 2: sem aplicação do operador sobel (esquerda) e com o operador sobel (direita)**
  <p float="left" align="middle">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/inferno/00003989_024.png_2042.png" height="300">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/inferno/00003989_024.png_2242.png" height="300">
  </p>
+ pontos positivos:
+ - Contornos funcionam bem, com adição limitade de ruído
+ - Contornos rapidamente visíveis
+ - Melhor distinção de ossos/costelas em regiões de intensidades similares
+ pontos negativos:
+ - Pode ser prejudicial de acordo com a informação que um profissional deseje extrair da imagem: artefatos, mudanças de aspecto da imagem original
+ 
+ 
  ## Referências
 
 [1] How To Read An Airport Security X-Ray Image. Disponível em: < http://snallabolaget.com/how-to-read-an-airport-security-x-ray-image/ >. Acesso em: 12 jun. 2018.
