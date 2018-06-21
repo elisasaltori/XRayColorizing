@@ -511,7 +511,8 @@ Por fim, avaliamos o uso do operador sobel sobre imagens de radiografia. A segui
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/inferno/00003896_005.png_2042.png" height="300">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/inferno/00003896_005.png_2242.png" height="300">
  </p>
-   __Exemplo 2: sem aplicação do operador sobel (esquerda) e com o operador sobel (direita)__
+ 
+   **Exemplo 2: sem aplicação do operador sobel (esquerda) e com o operador sobel (direita)**
  <p float="left" align="middle">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/inferno/00003989_024.png_2042.png" height="300">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/inferno/00003989_024.png_2242.png" height="300">
