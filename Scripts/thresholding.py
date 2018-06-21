@@ -38,6 +38,9 @@ def otsu_method_three(img_in):
         w0 = w0 + hist[i] #cumulative probability pi
         sum0 = sum0 + i * hist[i] # sum(pi * i)
 
+        if(w0==0):
+            continue
+
         m0 = sum0/w0 #mean sum(pi*i)/pi
         
         w1 = 0
@@ -47,10 +50,14 @@ def otsu_method_three(img_in):
 
             w1 = w1 + hist[j] #cumulative probability pi
             sum1 = sum1 + j * hist[j] # sum(pi * i)
+            
+            if(w1 == 0):
+                continue
 
             m1 = sum1/w1 #mean sum(pi*i)/pi
             
             w2 = 1 - w1 - w0
+            
             if(w2 <= 0):
                 break
 

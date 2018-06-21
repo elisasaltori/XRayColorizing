@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import matplotlib as mat
 import numpy as np
-from . import thresholding as tr
+import thresholding as tr
 
 def baggage_colorize_fixed(img_in):
     """
@@ -43,6 +43,8 @@ def baggage_colorize_fixed(img_in):
 
     img_out[:,:,1]=rev/255.0*1.5 #saturation
     img_out[:,:,2]=img_in/255.0*0.95 #value
+
+    img_out[img_out>1]=1
 
     img_out = mat.colors.hsv_to_rgb(img_out)
 
@@ -89,6 +91,8 @@ def baggage_colorize(img_in):
 
     img_out[:,:,1]=rev/255.0*1.5 #saturation
     img_out[:,:,2]=img_in/255.0*0.95 #value
+
+    img_out[img_out>1]=1
 
     img_out = mat.colors.hsv_to_rgb(img_out)
 
