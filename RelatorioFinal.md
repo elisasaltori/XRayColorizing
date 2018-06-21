@@ -503,23 +503,29 @@ O operador sobel também tende a não funcionar bem com imagens que obtêm um ma
  Sendo assim, o mapeamento inferno apresenta o melhor resultado com as radiografias, possuindo um aspecto mais agradável aos olhos humanos e fornecendo uma maior distinção dos elementos da imagem, o que é o objetivo da colorização.
  
  #### Uso do operador sobel
+ 
+Por fim, avaliamos o uso do operador sobel sobre imagens de radiografia. A seguir, temos dois exemplos de imagens, sem e com o operador sobel aplicado. O colormap inferno foi utilizado por ter sido considerado o de melhor resultado.
+
    **Exemplo 1: sem aplicação do operador sobel (esquerda) e com o operador sobel (direita)**
  <p float="left" align="middle">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/inferno/00003896_005.png_2042.png" height="300">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/inferno/00003896_005.png_2242.png" height="300">
  </p>
-   **Exemplo 2: sem aplicação do operador sobel (esquerda) e com o operador sobel (direita)**
+   __Exemplo 2: sem aplicação do operador sobel (esquerda) e com o operador sobel (direita)__
  <p float="left" align="middle">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/inferno/00003989_024.png_2042.png" height="300">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/inferno/00003989_024.png_2242.png" height="300">
  </p>
- pontos positivos:
- - Contornos funcionam bem, com adição limitade de ruído
- - Contornos rapidamente visíveis
- - Melhor distinção de ossos/costelas em regiões de intensidades similares
- pontos negativos:
- - Pode ser prejudicial de acordo com a informação que um profissional deseje extrair da imagem: artefatos, mudanças de aspecto da imagem original
  
+ Em primeiro lugar, podemos perceber que o operador sobel possui um comportamento mais uniforme em radiografias em comparação aos resultados obtidos em sua aplicação sobre bagagens. Isso torna seu uso mais interessante, já que ele poderia então ser aplicado sobre múltiplas imagens radiografias sem uma verificação mais detalhada das características individuais de cada imagem.
+ 
+ Temos que o operador sobel realça os contornos da imagem de forma consistente, com adição limitada de ruído. Contornos de costelas e vértebras se tornam imediatamente visíveis e regiões de intensidades similares têm também suas características mais evidenciadas. 
+ 
+ No entanto, a aplicação do operador tem também suas desvantagens. Alguns artefatos são criados ou destacados com o realce de bordas, o que poderia prejudicar o diagnótisco de acordo com a informação que um professional desejasse extrair da imagem. A mudança do aspecto original da radiografia também poderia, inicialmente, causar estranhaze ao médico, acostumado a radiografias usuais em preto e branco, sem realce de bordas.
+ 
+ Portanto, o uso do operador sobel deveria ser discutido junto a profissionais médicos, com o objetivo de definir em que casos sua aplicação seria benéfica. Podemos dizer, no entanto, que sua aplicação sobre radiografias tem um efeito consistente, realçando de forma efetiva os elementos da imagem, e que, assim, seu uso não deveria ser rapidamente descartado.
+ 
+
  
  ## Referências
 
