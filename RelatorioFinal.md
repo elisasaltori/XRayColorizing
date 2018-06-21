@@ -473,7 +473,7 @@ O operador sobel também tende a não funcionar bem com imagens que obtêm um ma
  
  #### Comparação entre métodos
  
- 
+ A seguir, temos três exemplos de imagens colorizadas segundo os três métodos genéricos: hot, inferno e spectral. Dentre os exemplos, o exemplo 3 apresenta uma imagem com o operador sobel aplicado.
  
  **Exemplo 1: colormaps hot, inferno e spectral**
  <p float="left" align="middle">
@@ -481,25 +481,26 @@ O operador sobel também tende a não funcionar bem com imagens que obtêm um ma
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/inferno/00000099_003.png_2042.png" height="300">
   <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/spectral/00000099_003.png_2052.png" height="300">
  </p>
-  **Exemplo 2:**
+ 
+  __Exemplo 2:__
  <p float="left" align="middle">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/hot/00003899_002.png_2032.png" height="300">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/inferno/00003899_002.png_2042.png" height="300">
   <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/spectral/00003899_002.png_2052.png" height="300">
  </p>
-   **Exemplo 3:**
+ 
+   __Exemplo 3:__
   <p float="left" align="middle">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/hot/00000132_002.png_2232.png" height="300">
  <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/inferno/00000132_002.png_2242.png" height="300">
   <img src="https://github.com/elisasaltori/XRayColorizing/raw/master/Test_Images/Color_Images/color_chest/spectral/00000132_002.png_2252.png" height="300">
  </p>
  
- - hot: desvantagem - difícil de ver partes mais claras da imagem, muito brilhante
- - inferno: mais dintinguíveis, perceptualmente uniforme, então pode-se notar melhor características em qualquer intensidade
- - spectral: melhor para perceber detalhes em partes que o colormap hot deixa claro demais, mas cor vermelha distraí para o fundo
-  tons esverdeados com vermelho poderiam ser um problema também para daltônicos
-  
-  Inferno é o melhor, com aspecto mais agradável e maior distinção de características
+ A partir das imagens acima, podemos identificar algumas vantagens e desvantagens para os diferentes mapeamentos de cores. De início, temos que o colormap Spectral, por ser um mapeamento divergente, possui um grande contraste entre o fundo e os ossos mais claros(vermelho) e a parte mostrada em azul. Isso pode ser um aspecto negativo para a imagem, já que pode distrair o leitor de detalhes apresentados em vermelho e criar um falsa dicotomia entre ossos apresentados em azul ou em vermelho.
+ 
+ Já os colormaps hot e inferno, por serem sequenciais, não apresentam esse problema. As cores variam de maneira uniforme na imagem, sem dar destaque excessivo a uma ou a outra parte. No entanto, o colormap hot apresenta uma desvantagem em relação ao inferno: as partes mais brilhantes da imagem, em amarelo claro, dificultam a visualização de detalhes. Isso não ocorre no inferno, por ser um mapa perceptualmente uniforme aos olhos humanos, o que possibilita que as características sejam distinguidas da mesma forma em qualquer valor de intensidade.
+ 
+ Sendo assim, o mapeamento inferno apresenta o melhor resultado com as radiografias, possuindo um aspecto mais agradável aos olhos humanos e fornecendo uma maior distinção dos elementos da imagem, o que é o objetivo da colorização.
  
  #### Uso do operador sobel
    **Exemplo 1: sem aplicação do operador sobel (esquerda) e com o operador sobel (direita)**
