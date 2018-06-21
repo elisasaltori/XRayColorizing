@@ -46,7 +46,7 @@ Depois de tratadas, essas imagens serão então colorizadas. Várias opções de
 ### Filtros de suavização
 Esses filtros serão utilizados para a remoção de ruído das imagens de entrada. 
 
-Inicialmente, pretende-se utilizar os seguintes métodos:
+São utilizados os seguintes métodos:
 - Filtro de média
 - Filtro de mediana
 - Filtro gaussiano
@@ -54,19 +54,22 @@ Inicialmente, pretende-se utilizar os seguintes métodos:
 ### Filtros de realce de bordas
 Esses filtros serão utilizados a fim de tornas as bordas mais nitidas, facilitando a distinção entre objetos distintos. Eles também têm como função reverter qualquer suavização excessiva sobre bordas que tenha sido causada pelos filtros de suavização.
 
-Inicialmente, pretende-se utilizar os seguintes métodos:
+Foram implementados os seguintes métodos:
 - Filtro laplaciano
 - Operador Sobel
 
 ### Equalização da imagem
 Esses métodos serão utilizados para aumentar o contraste final da imagem.
 
-Inicialmente, pretende-se utilizar os seguintes métodos:
+Para essa etapa, temos os seguintes métodos:
 - Normalização comum da imagem
 - Equalização por histograma
 
 ### Mapeamento para cores
-No momento, três mapeamentos de cores distintos estão em uso:
-- Mapa para colorização de bagagens
+Temos seis mapeamentos disponíveis, os três primeiros exclusivos para bagagens:
+- Colorização de bagagem com thresholds fixos
+- Colorização de bagagem com thresholds variáveis
+- Colorização de bagagem com funções seno
 - Hot colormap
 - Inferno colormap
+- Spectral colormap
